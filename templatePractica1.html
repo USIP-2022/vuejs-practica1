@@ -88,27 +88,26 @@
     </div>
 </nav>
 
-<div class="container">
+<div class="container" id="producto">
 
     <div class="row">
-        <h3>S6S Mini GPS Drones</h3>
+        <h3 v-html="producto.nombre">S6S Mini GPS Drones</h3>
     </div>
     <div class="row">
         <div class="col-12 col-sm-6 col-md-4 ">
-            <img src="https://ae01.alicdn.com/kf/S00eb0e55c14f47e2bbf828a92ecd5515U/S6S-Mini-GPS-Drones-150g-Drone-4K-Profesional-HD-Dual-Camera-5G-WIFI-FPV-Brushless-Folding.jpg_Q90.jpg_.webp"
+            <img :src="producto.imagen"
                  alt="" width="100%">
         </div>
-        <div class="col-12 col-sm-6  col-md-8">
-            <h6>S6S Mini GPS Drones 150g Drone 4K Profesional HD Dual Camera 5G WIFI FPV Brushless Folding Quadcopter RC
+        <div class="col-12 col-sm-6  col-md-8" >
+            <h6 v-html="producto.descripcion">S6S Mini GPS Drones 150g Drone 4K Profesional HD Dual Camera 5G WIFI FPV Brushless Folding Quadcopter RC
                 Dron Helicopter Toys</h6>
-            <div class="p-3 mb-2 text-white" :style="precioEstilos"  id="precio">
-                Precio: 350 BOB
+            <div class="p-3 mb-2 text-white" :style="precioEstilos"  >
+                Precio: {{producto.precio}} BOB
             </div>
             <h5>Color</h5>
             <div>
-                <div class="color-box clic" style="background: red"></div>
-                <div class="color-box clic" style="background: blue"></div>
-                <div class="color-box clic" style="background: black"></div>
+                <div v-for="color of producto.colores" class="color-box clic" :style="`background:${color}`"></div>
+
             </div>
             <h5>Cantidad</h5>
             <div class="quantity">
@@ -221,18 +220,40 @@
             menus: configuracionPagina.menus,
         }
     });
-    var precio = new Vue({
-        el: "#precio",
-        data: {
-            precioEstilos: configuracionPagina.precioEstilos
-        }
-    });
+
     var footer = new Vue({
         el: "#footer",
         data: {
             footerColor: configuracionPagina.footerColor
         }
     });
+
+    //-----------Cambios seccion Producto-----------
+
+    producto = {
+        id: 1,
+        imagen: "https://ae01.alicdn.com/kf/Sc3cc58f2a441419f970cc01f9e5358fbw/Dron-LU3-MAX-GPS-8K-HD-profesional-con-c-mara-Dual-card-n-autoestabilizador-Motor-sin.jpg_Q90.jpg_.webp",
+        nombre: "Dron LU3 MAX GPS 8K HD",
+        descripcion: "Dron LU3 MAX GPS 8K HD profesional con <b>cámara Dual</b>,cardán autoestabilizador, Motor sin escobillas para evitar obstáculos, cuadricóptero  plegable",
+        precio: "620",
+        colores: ["red", "blue", "black", "yellow"]
+    };
+
+    var product = new Vue({
+        el: "#producto",
+        data: {
+            producto: producto,
+            precioEstilos: configuracionPagina.precioEstilos
+
+        }
+    });
+
+    //-------Cambios sección productos relacionados-----
+
+
+
+
+
 </script>
 </body>
 
