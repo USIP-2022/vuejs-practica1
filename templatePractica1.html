@@ -117,8 +117,13 @@
                 <contador v-bind:iniciocontador="contador"></contador>
 
             </div>
-            <div class="buy-box">
+            <!--<div class="buy-box">
                 <button type="button" class="btn btn-primary">Comprar</button>
+            </div>-->
+            <div class="buy-box">
+                <div id="example-2">
+                    <button type="button" class="btn btn-primary" @click='greet'>Comprar</button>
+                </div>
             </div>
 
         </div>
@@ -144,7 +149,7 @@
                     <div>
                         <div>
                             <div v-for="color of productoRelacionado.colores" class="color-box clic"
-                                 :style="`background:${color}`"></div>
+                                :style="`background:${color}`"></div>
                         </div>
                     </div>
                 </div>
@@ -250,6 +255,26 @@
         }
     });
 
+var example2 = new Vue({
+            el: '#example-2',
+            data: {
+                name_id: 'Dron LU3 MAX GPS 8K HD',
+                cantidad: 1,
+                color: ["red"]
+            },
+            // definir métodos bajo el objeto `methods`
+            methods: {
+                greet(event) {
+                // `this` inside methods points to the current active instance
+                alert('Pedido: id:' + this.name_id + ' , cantidad:' + this.cantidad + ' , color:' + this.color + '. ')
+                // `event` is the native DOM event
+                if (event) {
+                    alert(event.target.tagName)
+                }
+                }
+            }
+})
+example2.greet()
 </script>
 </body>
 
