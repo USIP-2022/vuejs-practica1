@@ -13,6 +13,7 @@
             integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
             crossorigin="anonymous"></script>
     <script src="components/contador.js"></script>
+    <script src="components/comprar.js"></script>
 
     <style>
         .color-box {
@@ -122,7 +123,9 @@
             </div>-->
             <div class="buy-box">
                 <div id="example-2">
-                    <button type="button" class="btn btn-primary" @click='greet'>Comprar</button>
+                    
+                      <comprar v-bind:greet="comprar"></comprar>
+                    <!--<button type="button" class="btn btn-primary" @click='greet'>Comprar</button> !-->
                 </div>
             </div>
 
@@ -255,7 +258,7 @@
         }
     });
 
-var example2 = new Vue({
+    /*var example2 = new Vue({
             el: '#example-2',
             data: {
                 name_id: 'Dron LU3 MAX GPS 8K HD',
@@ -273,8 +276,8 @@ var example2 = new Vue({
                 }
                 }
             }
-})
-example2.greet()
+    })*/
+
 </script>
 </body>
 
